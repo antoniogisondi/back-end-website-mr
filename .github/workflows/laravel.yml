@@ -78,17 +78,8 @@ jobs:
         DB_DATABASE: laravel
         DB_USERNAME: root
         DB_PASSWORD: ""
-      run: php artisan migrate
-
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: mysql
-        DB_HOST: 127.0.0.1
-        DB_PORT: 3306
-        DB_DATABASE: laravel
-        DB_USERNAME: root
-        DB_PASSWORD: ""
       run: |
+          php artisan migrate
           set +e  # Continue on error
           OUTPUT=$(php artisan migrate 2>&1)
           EXIT_CODE=$?
@@ -100,3 +91,4 @@ jobs:
               exit $EXIT_CODE
             fi
           fi
+
