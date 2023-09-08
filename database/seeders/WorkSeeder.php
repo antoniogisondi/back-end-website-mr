@@ -14,6 +14,10 @@ class WorkSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $works = [
+            [
+                'titolo' => '',
+            ]
+        ];
     }
 }
