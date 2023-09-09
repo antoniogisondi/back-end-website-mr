@@ -92,19 +92,26 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
+        $works = Work::find($work);
         return view('admin.works.edit', compact('work'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateWorkRequest  $request
+     * @param  \App\Models\Work  $pet
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateWorkRequest $request, $id)
+    public function update(UpdateWorkRequest $request, Work $work)
     {
-        //
+        $form_data = $request->all();
+        
+        $works->update($form_data);
+
+        $message = 'Lavoro aggiornato correttamente';
+
+        return redirect()->route('admin.works.index', ['message' => $message]);
     }
 
     /**
