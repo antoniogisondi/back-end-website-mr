@@ -18,7 +18,7 @@
                     @endif
                     <div class=" col-3 link d-flex flex-column">
                         <a class="btn btn-primary mb-3" href="{{ route('admin.works.index') }}">I lavori dell'azienda</a>
-                        <a class="btn btn-primary mb-3" href="{{ route('admin.services.index') }}">Lista dei vaccini</a>
+                        <a class="btn btn-primary mb-3" href="{{ route('admin.services.index') }}">Lista dei servizi</a>
                     </div>
                 </div>
             </div>

@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-12 my-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Inserisci una nuova malattia</h2>
-                    <a href=" {{ route('admin.illnesses.index')}} " class="btn btn-secondary btn-sm">Le malattie diagnosticate</a>
+                    <h2>Inserisci un nuovo servizio</h2>
+                    <a href=" {{ route('admin.services.index')}} " class="btn btn-secondary btn-sm">I servizi della nostra azienda</a>
                 </div>
                 <div>
                     @if($errors->any())
@@ -19,38 +19,24 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.illnesses.store') }} " method="POST">
+                    <form action=" {{ route('admin.services.store') }} " method="POST">
                         @csrf
                         <div class="class-group">
-                            <label class="control-label">Nome della malattia</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Inserisci il nome della malattia" value="{{ old('name') }}">
-                            @error('name')
+                            <label class="control-label">Titolo</label>
+                            <input type="text" id="titolo" name="titolo" class="form-control @error('titolo')is-invalid @enderror" placeholder="Inserisci il titolo del lavoro" value="{{ old('titolo') }}">
+                            @error('titolo')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Diagnosi</label>
-                            <input type="text" id="diagnosis" name="diagnosis" class="form-control @error('diagnosis')is-invalid @enderror" placeholder="Inserisci una disgnosi" value="{{ old('diagnosis') }}">
-                            @error('diagnosis')
-                                <div class="text-danger"> {{ $message }} </div>
-                            @enderror
-                        </div>
-                        <div class="class-group">
-                            <label class="control-label">Trattamento</label>
-                            <input type="text" id="treatment" name="treatment" class="form-control @error('treatment')is-invalid @enderror" placeholder="Inserisci il trattamento per la malattia" value="{{ old('treatment') }}">
-                            @error('treatment')
-                                <div class="text-danger"> {{ $message }} </div>
-                            @enderror
-                        </div>
-                        <div class="class-group">
-                            <label class="control-label">Note varie</label>
-                            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control">{{ old('notes') }}</textarea>
-                            @error('notes')
+                            <label class="control-label">Descrizione del lavoro</label>
+                            <textarea type="text" id="descrizione" name="descrizione" class="form-control @error('descrizione')is-invalid @enderror" placeholder="Inserire la descrizione del lavoro">{{ old('descrizione') }}</textarea>
+                            @error('descrizione')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group my-3">
-                            <button type="submit" class="btn btn-primary btn-success">Crea</button>
+                            <button type="submit" class="btn btn-primary btn-success">Aggiungi un servizio</button>
                         </div>
                     </form>
                 </div>

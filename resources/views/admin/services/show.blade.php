@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="mb-4 d-flex justify-content-end">
-                    <a href="{{route('admin.illnesses.index')}}" class="btn btn-primary">Torna alla lista delle malattie</a>
+                    <a href="{{route('admin.services.index')}}" class="btn btn-primary">Torna alla lista dei servizi</a>
                 </div>
             </div>
         </div>
@@ -13,16 +13,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h1>{{$illness->name}}</h1>
-                        <h6>{{ $illness->slug }}</h6>
+                        <h1>{{ $service->titolo }}</h1>
+                        <h6>{{ $service->slug }}</h6>
                     </div>
 
                     <div class="card-body">
-                        <strong>Dettagli:</strong>
+                        <strong>Descrizione:</strong>
                         <ul>
-                            <li><strong>Diagnosi:</strong> {{ $illness->diagnosis}}</li>
-                            <li><strong>Trattamento:</strong> {{ $illness->treatment}}</li>
-                            <li><strong>Note aggiuntive:</strong> {{ $illness->notes}}</li>
+                            <li> {{ $service->descrizione }}</li>
                         </ul>   
                     </div>
                 </div>

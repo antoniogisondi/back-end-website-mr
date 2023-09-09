@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Service;
 
 class ServiceController extends Controller
 {
@@ -14,8 +17,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $works = Work::all();
-        return view('admin.services.index');
+        $services = Service::all();
+        return view('admin.services.index', compact('services'));
     }
 
     /**
@@ -25,7 +28,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.services.create');
     }
 
     /**
@@ -34,9 +37,17 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
-        //
+        $form_data = $request->all();
+        $services = new Service();
+        $form_data['slug'] =  $services->generateSlug($form_data['titolo']);
+
+        $services->fill($form_data);
+
+        $services->save();
+        $message = 'Creazione  completata';
+        return redirect()->route('admin.services.index', ['message' => $message]);
     }
 
     /**
@@ -45,9 +56,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $service)
     {
-        //
+        return view('admin.services.show', compact('service'));
     }
 
     /**
@@ -56,9 +67,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        //
+        return view('admin.services.edit', compact('service'));
     }
 
     /**
@@ -68,9 +79,15 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $form_data = $request->all();
+        
+        $form_data['slug'] =  $service->generateSlug($form_data['titolo']);
+        $service->update($form_data);
+        
+        $message = 'Aggiornamento animale completato';
+        return redirect()->route('admin.services.index', ['message' => $message]);
     }
 
     /**
@@ -79,8 +96,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return redirect()->route('admin.services.index');
     }
 }
