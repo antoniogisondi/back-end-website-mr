@@ -1,14 +1,32 @@
 # Use the official PHP image from the Docker Hub
-FROM php:7.4-fpm
+FROM php:fpm-bookworm
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    libonig-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev
+
+# Configure PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+
+# Install PHP extensions
+RUN docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    exif \
+    pcntl \
+    bcmath \
+    gd \
+    opcache
 
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-
-# Install the necessary PHP extensions for Laravel
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath opcache
 
 # Set the working directory
 WORKDIR /var/www/html
