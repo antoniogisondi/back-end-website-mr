@@ -92,7 +92,7 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        //
+        return view('admin.works.edit', compact('work'));
     }
 
     /**
