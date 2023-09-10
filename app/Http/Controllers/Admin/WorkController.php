@@ -43,33 +43,13 @@ class WorkController extends Controller
         $form_data = $request->all();
 
         $works = new Work();
-
-        if($request->hasFile('img-1')){
-            $path = Storage::put('works-image', $request->img);
-            $form_data['img-1'] = $path;
-        }
-
-        if($request->hasFile('img-2')){
-            $path = Storage::put('works-image', $request->img);
-            $form_data['img-2'] = $path;
-        }
-
-        if($request->hasFile('img-3')){
-            $path = Storage::put('works-image', $request->img);
-            $form_data['img-3'] = $path;
-        }
-
-        if($request->hasFile('img-4')){
-            $path = Storage::put('works-image', $request->img);
-            $form_data['img-4'] = $path;
-        }
         
         $form_data['slug'] =  $works->generateSlug($form_data['titolo']);
 
         $works->fill($form_data);
 
         $works->save();
-        $message = 'Creazione  completata';
+        $message = 'Creazione completata';
         return redirect()->route('admin.works.index', ['message' => $message]);
     }
 
@@ -92,7 +72,6 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        $works = Work::find($work);
         return view('admin.works.edit', compact('work'));
     }
 
@@ -107,7 +86,8 @@ class WorkController extends Controller
     {
         $form_data = $request->all();
         
-        $works->update($form_data);
+        $form_data['slug'] =  $work->generateSlug($form_data['titolo']);
+        $work->update($form_data);
 
         $message = 'Lavoro aggiornato correttamente';
 
@@ -120,8 +100,9 @@ class WorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Work $work)
     {
-        //
+        $work->delete();
+        return redirect()->route('admin.works.index');
     }
 }

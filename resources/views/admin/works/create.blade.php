@@ -35,38 +35,6 @@
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
-                        <div class="col-12 my-3">
-                            <!-- Immagine -->
-                            <label class="control-label my-3">Immagine 1</label>
-                            <input type="file" name="image-1" id="image-1" placeholder="Inserisci l'immagine del lavoro in questione" class="form-control @error('image') is-invalid @enderror" value="{{ old('image-1') }}">
-                            @error('image')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-12 my-3">
-                            <!-- Immagine -->
-                            <label class="control-label my-3">Immagine 2</label>
-                            <input type="file" name="image-2" id="image-2" placeholder="Inserisci l'immagine del lavoro in questione" class="form-control @error('image') is-invalid @enderror" value="{{ old('image-2') }}">
-                            @error('image')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-12 my-3">
-                            <!-- Immagine -->
-                            <label class="control-label my-3">Immagine 3</label>
-                            <input type="file" name="image-3" id="image-3" placeholder="Inserisci l'immagine del lavoro in questione" class="form-control @error('image') is-invalid @enderror" value="{{ old('image-3') }}">
-                            @error('image')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-12 my-3">
-                            <!-- Immagine -->
-                            <label class="control-label my-3">Immagine 4</label>
-                            <input type="file" name="image-4" id="image-4" placeholder="Inserisci l'immagine del lavoro in questione" class="form-control @error('image') is-invalid @enderror" value="{{ old('image-4') }}">
-                            @error('image')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
                         <div class="class-group my-3">
                             <button type="submit" class="btn btn-primary btn-success">Aggiungi lavoro</button>
                         </div>

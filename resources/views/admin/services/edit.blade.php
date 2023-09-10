@@ -20,7 +20,7 @@
                     @endif
                     <form action=" {{ route('admin.services.update', $service->id) }} " method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
                         <div class="class-group">
                             <label class="control-label">Titolo del servizio</label>
                             <input type="text" id="titolo" name="titolo" class="form-control @error('titolo')is-invalid @enderror" placeholder="Inserisci il titolo del servizio" value="{{ old('titolo') ?? $service->titolo}}">

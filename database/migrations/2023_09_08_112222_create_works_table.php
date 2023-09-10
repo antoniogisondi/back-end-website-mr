@@ -18,10 +18,6 @@ return new class extends Migration
             $table->string('titolo', 150);
             $table->string('slug');
             $table->text('descrizione');
-            $table->string('img-1')->nullable();
-            $table->string('img-2')->nullable();
-            $table->string('img-3')->nullable();
-            $table->string('img-4')->nullable();
             $table->timestamps();
         });
     }

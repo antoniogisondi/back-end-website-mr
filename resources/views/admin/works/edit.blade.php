@@ -21,8 +21,6 @@
                     <form action=" {{ route('admin.works.update', $work->id) }} " method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <form action=" {{ route('admin.works.store') }} " method="POST">
-                        @csrf
                         <div class="class-group">
                             <label class="control-label">Titolo del lavoro</label>
                             <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="{{ $work->titolo }}" value="{{ old('titolo') ?? $work->titolo}}">
@@ -30,18 +28,12 @@
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
-
-                        
                      
-                        <div>
-                            <img src="{{ asset('storage/'.$work->image) }}" width="600px" height="500px" alt="Immagine non disponibile">
-                        </div>
-                        <div class="col-12 my-3">
-                            <!-- Immagine -->
-                            <label class="control-label my-3">Immagine</label>
-                            <input type="file" name="image" id="image" placeholder="Inserisci l'immagine dell'animale in questione" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') ?? $work->image}}">
-                            @error('image')
-                                <div class="text-danger">{{ $message }}</div>
+                        <div class="class-group">
+                            <label class="control-label">Descrizione del lavoro</label>
+                            <textarea type="text" id="descrizione" name="descrizione" class="form-control @error('descrizione')is-invalid @enderror" placeholder="Inserire la descrizione del lavoro">{{ old('descrizione') ?? $work->descrizione}}</textarea>
+                            @error('descrizione')
+                                <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group my-3">
