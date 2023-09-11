@@ -18,9 +18,6 @@
 
                     <div class="card-body">
                         <strong>Dettagli:</strong>
-                        {{-- <div class="col-12 my-5">
-                            <img src="{{ asset('storage/'. $work->im) }}" width="20%" alt="Immagine non disponibile">
-                        </div> --}}
                         <ul>
                             <li><strong>Slug:</strong> {{ $work->slug}}</li>
                             <li><strong>Descrizione:</strong> {{ $work->descrizione}}</li> 
