@@ -23,8 +23,8 @@
                         @method('PUT')
                         <div class="class-group">
                             <label class="control-label">Titolo del lavoro</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="{{ $work->titolo }}" value="{{ old('titolo') ?? $work->titolo}}">
-                            @error('name')
+                            <input type="text" id="titolo" name="titolo" class="form-control @error('name')is-invalid @enderror" placeholder="{{ $work->titolo }}" value="{{ old('titolo') ?? $work->titolo}}">
+                            @error('titolo')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
