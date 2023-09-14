@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\WorkController as WorkController;
 use App\Http\Controllers\Admin\ServiceController as ServiceController;
 use App\Http\Controllers\Admin\TypeController as TypeController;
+use App\Models\Types;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ use App\Http\Controllers\Admin\TypeController as TypeController;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::bind('type', function ($slug) {
+    return \App\Models\Type::where('slug', $slug)->firstOrFail();
+});
+
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
