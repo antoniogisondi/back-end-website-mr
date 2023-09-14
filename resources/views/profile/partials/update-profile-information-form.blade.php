@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-secondary">
-            {{ __('Informazioni sul profilo') }}
+            {{ __('Profile Information') }}
         </h2>
 
         <p class="mt-1 text-muted">
-            {{ __("Aggiorna le informazioni del profilo e l'indirizzo email del tuo account.") }}
+            {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
 
@@ -43,16 +43,16 @@
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
             <div>
                 <p class="text-sm mt-2 text-muted">
-                    {{ __('Il tuo indirizzo email non è stato verificato.') }}
+                    {{ __('Your email address is unverified.') }}
 
                     <button form="send-verification" class="btn btn-outline-dark">
-                        {{ __('Clicca qui per ri-inviare l\'email di verifica.') }}
+                        {{ __('Click here to re-send the verification email.') }}
                     </button>
                 </p>
 
                 @if (session('status') === 'verification-link-sent')
                 <p class="mt-2 text-success">
-                    {{ __('Un nuovo link di verifica è stato inviato al tuo indirizzo email.') }}
+                    {{ __('A new verification link has been sent to your email address.') }}
                 </p>
                 @endif
             </div>
