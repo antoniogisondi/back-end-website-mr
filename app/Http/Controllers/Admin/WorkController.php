@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWorkRequest;
 use App\Http\Requests\UpdateWorkRequest;
 use App\Models\Work;
+use App\Models\Type;
+use Carbon\Carbon;
+
 
 class WorkController extends Controller
 {
@@ -25,9 +28,10 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Work $work)
     {
-        return view('admin.works.create');
+        $types = Type::all();
+        return view('admin.works.create', compact('work', 'types'));
     }
 
     /**
@@ -42,7 +46,16 @@ class WorkController extends Controller
 
         $works = new Work();
         
-        $form_data['slug'] =  $works->generateSlug($form_data['titolo']);
+        $form_data['slug'] = $works->generateSlug($form_data['titolo']);
+
+        // Formattazione delle date
+        if (isset($form_data['data_inizio'])) {
+            $form_data['data_inizio'] = Carbon::createFromFormat('d/m/Y', $form_data['data_inizio'])->format('Y/m/d');
+        }
+
+        if (isset($form_data['data_fine'])) {
+            $form_data['data_fine'] = Carbon::createFromFormat('d/m/Y', $form_data['data_fine'])->format('Y-m-d');
+        }
 
         $works->fill($form_data);
 
@@ -50,6 +63,7 @@ class WorkController extends Controller
         $message = 'Creazione completata';
         return redirect()->route('admin.works.index', ['message' => $message]);
     }
+
 
     /**
      * Display the specified resource.
@@ -70,7 +84,8 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        return view('admin.works.edit', compact('work'));
+        $types = Type::all();
+        return view('admin.works.edit', compact('work', 'types'));
     }
 
     /**
