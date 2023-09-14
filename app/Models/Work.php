@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use App\Models\Work;
+use App\Models\Type;
 
 class Work extends Model
 {
     use HasFactory;
-    protected $fillable = ['titolo', 'slug', 'descrizione'];
+    protected $fillable = ['type_id', 'titolo', 'slug', 'descrizione', 'costo', 'data_inizio', 'data_fine', 'cliente', 'indirizzo_lavoro', 'responsabile_lavoro', 'materiali'];
     public static function generateSlug($titolo)
     {
         return Str::slug($titolo, '-');

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('titolo', 150);
             $table->string('slug');
             $table->text('descrizione');
-            $table->decimal('costo', 10, 2);
+            $table->decimal('costo', 10, 2)->nullable();
             $table->date('data_inizio')->nullable();
             $table->date('data_fine')->nullable();
             $table->string('cliente')->nullable();
