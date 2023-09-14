@@ -9,7 +9,7 @@
       <a href="{{route('admin.services.create')}}" class="btn btn-primary">Aggiungi un servizio</a>
     </div>
     <div>
-        <a href="{{route('admin.services.index')}}" class="btn btn-primary">I servizi della nostra azienda</a>
+        <a href="{{route('admin.types.index')}}" class="btn btn-primary">Vai alla lista delle tipologie di lavori</a>
       </div>
       <div>
         <a class="btn btn-primary my-3" href="{{ route('admin.works.index') }}">Lista dei lavori</a>

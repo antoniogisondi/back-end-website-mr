@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\WorkController as WorkController;
 use App\Http\Controllers\Admin\ServiceController as ServiceController;
+use App\Http\Controllers\Admin\TypeController as TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('works', WorkController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('types', TypeController::class);
 });
 
 Route::middleware('auth')->group(function () {
