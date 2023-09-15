@@ -50,9 +50,9 @@
                     <td>{{$type->slug}}</td>
                     <td>
                       <div class="d-flex align-items-center justify-content-between my-content">
-                          <a class="btn btn-sm btn-primary" href="{{route('admin.types.show', $type->id)}}"><i class="fa-solid fa-eye"></i></a>
-                          <a class="btn btn-sm btn-warning" href="{{route('admin.types.edit', $type->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
-                          <form class="form-delete" action="{{route('admin.types.destroy', $type->id)}}" method="POST">
+                          <a class="btn btn-sm btn-primary" href="{{route('admin.types.show', $type)}}"><i class="fa-solid fa-eye"></i></a>
+                          <a class="btn btn-sm btn-warning" href="{{route('admin.types.edit', $type)}}" class="mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
+                          <form class="form-delete" action="{{route('admin.types.destroy', $type)}}" method="POST">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-sm btn-danger">

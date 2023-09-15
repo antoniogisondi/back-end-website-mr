@@ -23,11 +23,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::bind('type', function ($slug) {
-    return \App\Models\Type::where('slug', $slug)->firstOrFail();
-});
-
-
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('works', WorkController::class);
