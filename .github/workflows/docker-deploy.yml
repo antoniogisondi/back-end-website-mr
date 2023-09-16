@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - feat/docker-container-ci-to-dockerhub
+      - main
 # comment
 env:
   IMAGE_NAME: backend-website-mr
