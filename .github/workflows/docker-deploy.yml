@@ -1,0 +1,14 @@
+name: Deploy to docker
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: test-echo-step
+        shell: bash
+        run: echo "hello world every minute"
