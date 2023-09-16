@@ -35,7 +35,7 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Install the PHP dependencies using Composer
-RUN RUN composer install --no-dev --optimize-autoloader -vvv --ignore-platform-reqs
+RUN composer install --no-dev --optimize-autoloader -vvv --ignore-platform-reqs
 
 # Change ownership of the application files to the www-data user
 RUN chown -R www-data:www-data /var/www/html
