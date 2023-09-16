@@ -34,6 +34,17 @@ WORKDIR /var/www/html
 # Copy the application files to the container
 COPY . /var/www/html
 
+# Install the necessary utilities and PHP extensions
+RUN apt-get install -y \
+    zip \
+    unzip \
+    git
+
+RUN apt-get update && \
+    apt-get install -y \
+    libzip-dev && \
+    docker-php-ext-install zip
+
 # Install the PHP dependencies using Composer
 RUN composer install --no-dev --optimize-autoloader -vvv --ignore-platform-reqs
 
