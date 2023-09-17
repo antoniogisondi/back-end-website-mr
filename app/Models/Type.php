@@ -10,7 +10,7 @@ use App\Models\Work;
 class Type extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome_tipologia', 'slug', 'descrizione'];
+    protected $fillable = ['nome_tipologia', 'slug', 'descrizione', 'cover_image'];
 
     public static function generateSlug($nome_tipologia){
         return Str::slug($nome_tipologia, '-');

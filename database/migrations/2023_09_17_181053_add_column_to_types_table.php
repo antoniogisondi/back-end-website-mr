@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('types', function (Blueprint $table) {
-            //
+            $table->string('cover_image')->nullable()->after('descrizione');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('types', function (Blueprint $table) {
-            //
+            $table->dropColumn('cover_image');
         });
     }
 };
