@@ -31,4 +31,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/standalonealliance/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/standalonealliance/${{ env.IMAGE_NAME }}:0.1
