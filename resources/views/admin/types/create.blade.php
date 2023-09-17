@@ -35,6 +35,14 @@
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
+                        <div class="col-12 my-3">
+                            <!-- Immagine -->
+                            <label class="control-label my-3">Immagine</label>
+                            <input type="file" name="cover_image" id="cover_image" placeholder="Inserisci l'immagine dell'animale in questione" class="form-control @error('cover_image') is-invalid @enderror" value="{{ old('cover_image') }}">
+                            @error('cover_image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="class-group my-3">
                             <button type="submit" class="btn btn-primary btn-success">Aggiungi tipologia</button>
                         </div>

@@ -27,7 +27,15 @@
                         <strong>Dettagli:</strong>
                         <ul>
                             <li><strong>Slug:</strong> {{ $type->slug}}</li>
-                            <li><strong>Descrizione:</strong> {{ $type->descrizione}}</li> 
+                            <li><strong>Descrizione:</strong> {{ $type->descrizione}}</li>
+                            <li>
+                                <strong>Copertina:</strong>
+                                @if ($type->cover_image)
+                                    <img class="d-block img-fluid w-25 border border-3 my-3" src="{{ asset('storage/'.$type->cover_image) }}" alt="{{ $type->slug }}-immagine-di-copertina">     
+                                @else
+                                    <span>Immagine non disponibile</span>
+                                @endif
+                            </li> 
                         </ul>   
                     </div>
                 </div>

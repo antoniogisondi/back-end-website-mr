@@ -36,6 +36,18 @@
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
+
+                        <div>
+                            <img src="{{ asset('storage/'.$type->cover_image) }}" width="600px" height="500px" alt="Immagine non disponibile">
+                        </div>
+                        <div class="col-12 my-3">
+                            <!-- Immagine -->
+                            <label class="control-label my-3">Immagine</label>
+                            <input type="file" name="cover_image" id="cover_image" placeholder="Inserisci l'immagine dell'animale in questione" class="form-control @error('cover_image') is-invalid @enderror" value="{{ old('cover_image') ?? $type->cover_image}}">
+                            @error('cover_image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="class-group my-3">
                             <button type="submit" class="btn btn-primary btn-success">Modifica dati</button>
                         </div>

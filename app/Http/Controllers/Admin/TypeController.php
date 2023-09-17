@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreTypeRequest;
@@ -40,6 +41,13 @@ class TypeController extends Controller
     public function store(StoreTypeRequest $request)
     {
         $form_data = $request->all();
+
+        if($request->hasFile('cover_image')){
+                    
+            $img_path = Storage::put('types_image', $request->cover_image);
+            
+            $form_data['cover_image'] = $img_path;
+        }
 
         $type = new Type();
 
@@ -86,6 +94,19 @@ class TypeController extends Controller
     public function update(UpdateTypeRequest $request, Type $type)
     {
         $form_data = $request->all();
+
+        if($request->hasFile('cover_image')){
+
+            if($type->cover_image){
+
+                Storage::delete($type->cover_image);
+            }
+            
+            $img_path = Storage::put('types_image', $request->cover_image);
+            
+            $form_data['cover_image'] = $img_path;
+        }
+        
 
         $form_data['slug'] = Type::generateSlug($form_data['nome_tipologia']);
 
