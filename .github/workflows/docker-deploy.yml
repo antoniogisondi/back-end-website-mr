@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - feat/docker-container
 # comment
 env:
   IMAGE_NAME: backend-website-mr
