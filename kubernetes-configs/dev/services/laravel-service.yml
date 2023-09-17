@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravel-backend-website-mr-svc
+spec:
+  selector:
+    app: backend-website-mr
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 80 # Port on which the LoadBalancer service listens
+      targetPort: 80 # Port to forward traffic to in the pod
+  type: LoadBalancer

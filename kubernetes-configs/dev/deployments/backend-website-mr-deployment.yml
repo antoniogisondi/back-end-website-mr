@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-website-mr
+  labels:
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-website-mr
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: backend-website-mr
+        tier: backend
+    spec:
+      volumes:
+      - name: dir
+        hostPath:
+          path: /code
+      containers:
+      - name: backend-website-mr
+        image: standalonealliance/backend-website-mr:latest
+        ports:
+          - containerPort: 80 #laravel application port
+        command: ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "80"]
+        volumeMounts:
+        - name: dir
+          mountPath: /code
+      initContainers:
+      - name: install
+        image: busybox
+        volumeMounts:
+        - name: dir
+          mountPath: /code
+        command:
+        - cp
+        - "-r"
+        - "/var/www/"
+        - "/code/app"
+      - name: env-injector
+        image: busybox # Use a lightweight image for this init container
+        volumeMounts:
+        - name: dir
+          mountPath: /code
+        command: ["sh", "-c"]
+        args:
+          - |
+            echo "i'm before the cd, in the root of the init contianer"
+            ls
+            cd code
+            echo ""
+            echo ""
+            echo ""
+            echo "i'm inside the code folder of the init container"
+            ls 
+            cd app
+            echo ""
+            echo ""
+            echo ""
+            echo "i'm inside the code/app folder of the init container"
+            ls
+            cd www
+            echo ""
+            echo ""
+            echo ""
+            echo "i'm inside the code/app/www folder of the init container"
+            ls
+            cp .env-example .env
+            echo "DB_CONNECTION=pgsql" >> /.env
+            # echo "DB_HOST=postgres-service" >> /path/to/your/.env
+            # echo "DB_PORT=5432" >> /path/to/your/.env
+            # echo "DB_DATABASE=your_database_name" >> /path/to/your/.env
+            # echo "DB_USERNAME=your_database_user" >> /path/to/your/.env
+            # echo "DB_PASSWORD=your_database_password" >> /path/to/your/.env
+
+
+# change this approach
