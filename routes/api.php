@@ -22,10 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::post('/contacts', [LeadController::class, 'store']);
-Route::get('/works', [WorkController::class, 'index']);
-Route::get('/works/{slug}', [WorkController::class, 'show']);
-Route::get('/services', [ServiceController::class, 'index']);
-Route::get('/services/{slug}', [ServiceController::class, 'show']);
-Route::get('/types', [TypeController::class, 'index']);
+// routes/api.php
+Route::middleware('cors')->group(function () {
+    Route::post('/contacts', [LeadController::class, 'store']);
+    Route::get('/works', [WorkController::class, 'index']);
+    Route::get('/works/{slug}', [WorkController::class, 'show']);
+    Route::get('/services', [ServiceController::class, 'index']);
+    Route::get('/services/{slug}', [ServiceController::class, 'show']);
+    Route::get('/types', [TypeController::class, 'index']);
+    // Le tue rotte API qui
+});
