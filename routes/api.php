@@ -30,5 +30,4 @@ Route::middleware('cors')->group(function () {
     Route::get('/services', [ServiceController::class, 'index']);
     Route::get('/services/{slug}', [ServiceController::class, 'show']);
     Route::get('/types', [TypeController::class, 'index']);
-    // Le tue rotte API qui
 });

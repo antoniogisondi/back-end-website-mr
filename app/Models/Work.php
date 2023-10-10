@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\Type;
+use App\Models\Image;
 
 class Work extends Model
 {
@@ -18,4 +19,15 @@ class Work extends Model
     public function type() {
         return $this->belongsTo(Type::class);
     }
+
+    /**
+     * Get all of the comments for the Work
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class);
+    }
 }
+
