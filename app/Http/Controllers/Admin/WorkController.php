@@ -7,6 +7,7 @@ use App\Http\Requests\StoreWorkRequest;
 use App\Http\Requests\UpdateWorkRequest;
 use App\Models\Work;
 use App\Models\Type;
+use App\Models\Image;
 use Carbon\Carbon;
 
 
@@ -43,6 +44,20 @@ class WorkController extends Controller
     public function store(StoreWorkRequest $request)
     {
         $form_data = $request->all();
+
+        for ($i = 1; $i <= 10; $i++) {
+            $field_name_image = 'image_'.$i;
+            $field_name_description = 'description_'.$i;
+            
+            if ($request->hasFile($field_name_image)) {
+                $img_path = Storage::put('work_image', $request->file($field_name_image));
+                Image::create([
+                    'work_id' => $work->id,
+                    'path_img' => $img_path,
+                    'description_img' => $request->input($field_name_description)
+                ]);
+            }
+        }
 
         $works = new Work();
         

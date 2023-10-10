@@ -130,3 +130,11 @@ class TypeController extends Controller
         return redirect()->route('admin.types.index')->with('message', "Tipologia di lavoro : '$name' eliminata correttamente");
     }
 }
+
+
+if($request->hasFile('image')){
+                    
+    $img_path = Storage::put('work_image', $request->image);
+    
+    $form_data['image'] = $img_path;
+}

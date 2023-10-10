@@ -98,6 +98,86 @@
                             @enderror
                         </div>
                         <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 1</label>
+                            <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 2</label>
+                            <input type="file" name="image_2" id="image_2" class="form-control @error('image_2') is-invalid @enderror" value="{{ old('image_2') }}">
+                            @error('image_2')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 3</label>
+                            <input type="file" name="image_3" id="image_3" class="form-control @error('image_3') is-invalid @enderror" value="{{ old('image_3') }}">
+                            @error('image_3')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 4</label>
+                            <input type="file" name="image_4" id="image_4" class="form-control @error('image_4') is-invalid @enderror" value="{{ old('image_4') }}">
+                            @error('image_4')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 5</label>
+                            <input type="file" name="image_5" id="image_5" class="form-control @error('image_5') is-invalid @enderror" value="{{ old('image_5') }}">
+                            @error('image_5')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 6</label>
+                            <input type="file" name="image_6" id="image_6" class="form-control @error('image_6') is-invalid @enderror" value="{{ old('image_6') }}">
+                            @error('image_6')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 7</label>
+                            <input type="file" name="image_7" id="image_7" class="form-control @error('image_7') is-invalid @enderror" value="{{ old('image_7') }}">
+                            @error('image_7')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 8</label>
+                            <input type="file" name="image_8" id="image_8" class="form-control @error('image_8') is-invalid @enderror" value="{{ old('image_8') }}">
+                            @error('image_8')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 9</label>
+                            <input type="file" name="image_9" id="image_9" class="form-control @error('image_9') is-invalid @enderror" value="{{ old('image_9') }}">
+                            @error('image_9')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
+                            <!-- Immagine -->
+                            <label class="control-label">Immagine 10</label>
+                            <input type="file" name="image_10" id="image_10" class="form-control @error('image_10') is-invalid @enderror" value="{{ old('image_10') }}">
+                            @error('image_10')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="class-group mt-4">
                             <button type="submit" class="btn btn-primary btn-success">Aggiungi lavoro</button>
                         </div>
                     </form>
