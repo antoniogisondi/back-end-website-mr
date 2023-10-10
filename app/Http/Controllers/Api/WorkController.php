@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\Type;
+use App\Models\Image;
 
 class WorkController extends Controller
 {
@@ -18,11 +19,21 @@ class WorkController extends Controller
     }
 
     public function show($slug){
-        $works = Type::where('slug', $slug)->firstOrFail()->works;
-        return response()->json([
-            'success' => true,
-            'results' => $works
-        ]);
+        try {
+            $type = Type::where('slug', $slug)->with('works.images')->firstOrFail();
+            $works = $type->works;
+    
+            return response()->json([
+                'success' => true,
+                'results' => $works
+            ]);
+    
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tipologia non trovata'
+            ], 404);
+        }
     }
 }
 

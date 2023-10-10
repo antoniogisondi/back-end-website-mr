@@ -20,14 +20,9 @@ class Work extends Model
         return $this->belongsTo(Type::class);
     }
 
-    /**
-     * Get all of the comments for the Work
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function images(): HasMany
+    public function images()
     {
-        return $this->hasMany(Image::class, 'work_id');
+        return $this->hasMany(Image::class);
     }
 }
 
