@@ -115,7 +115,7 @@ class WorkController extends Controller
      */
     public function show(Work $work)
     {
-        $images = Image::where('work_id')->get();
+        $images = Image::where('work_id', $work->id)->get();
         return view('admin.works.show', compact('work', 'images'));
     }
 

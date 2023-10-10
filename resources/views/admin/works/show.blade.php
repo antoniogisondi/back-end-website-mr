@@ -35,9 +35,15 @@
                             <li><strong>Responsabile lavoro:</strong> {{ $work->responsabile_lavoro}}</li>
                             <li><strong>Materiali:</strong> {{ $work->materiali}}</li>
                         </ul> 
-                        @foreach ($images as $image)
-                            <img class="d-block img-fluid w-25 border border-3 my-3" src="{{ asset('storage/'.$image->image) }}" alt="immagine-di-copertina">
-                        @endforeach  
+                        <div class="col d-flex flex row">
+                            @foreach ($images as $image)
+                                <img class="d-block img-fluid w-50 border border-3 my-3" src="{{ asset('storage/'.$image->image) }}" alt="immagine-di-copertina">
+                                <img class="d-block img-fluid w-50 border border-3 my-3" src="{{ asset('storage/'.$image->image_2) }}" alt="immagine-di-copertina">
+                                <img class="d-block img-fluid w-50 border border-3 my-3" src="{{ asset('storage/'.$image->image_3) }}" alt="immagine-di-copertina">
+                                <img class="d-block img-fluid w-50 border border-3 my-3" src="{{ asset('storage/'.$image->image_4) }}" alt="immagine-di-copertina">
+                                <img class="d-block img-fluid w-50 border border-3 my-3" src="{{ asset('storage/'.$image->image_5) }}" alt="immagine-di-copertina">
+                            @endforeach  
+                        </div>
                     </div>
                 </div>
             </div>
