@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreWorkRequest;
 use App\Http\Requests\UpdateWorkRequest;
 use App\Models\Work;
@@ -45,25 +46,10 @@ class WorkController extends Controller
     {
         $form_data = $request->all();
 
-        for ($i = 1; $i <= 10; $i++) {
-            $field_name_image = 'image_'.$i;
-            $field_name_description = 'description_'.$i;
-            
-            if ($request->hasFile($field_name_image)) {
-                $img_path = Storage::put('work_image', $request->file($field_name_image));
-                Image::create([
-                    'work_id' => $work->id,
-                    'path_img' => $img_path,
-                    'description_img' => $request->input($field_name_description)
-                ]);
-            }
-        }
+        $work = new Work();
 
-        $works = new Work();
-        
-        $form_data['slug'] = $works->generateSlug($form_data['titolo']);
+        $form_data['slug'] = Work::generateSlug($form_data['titolo']);
 
-        // Formattazione delle date
         if (isset($form_data['data_inizio'])) {
             $form_data['data_inizio'] = Carbon::createFromFormat('d/m/Y', $form_data['data_inizio'])->format('Y/m/d');
         }
@@ -71,10 +57,51 @@ class WorkController extends Controller
         if (isset($form_data['data_fine'])) {
             $form_data['data_fine'] = Carbon::createFromFormat('d/m/Y', $form_data['data_fine'])->format('Y-m-d');
         }
+        $work->fill($form_data);
 
-        $works->fill($form_data);
+        $work->save();
 
-        $works->save();
+        if($request->hasFile('image')){
+                    
+            $img_path = Storage::put('work_images', $request->image);
+            
+            $form_data['image'] = $img_path;
+        }
+
+        if($request->hasFile('image_2')){
+                    
+            $img_path_2 = Storage::put('work_images', $request->image_2);
+            
+            $form_data['image_2'] = $img_path_2;
+        }
+        if($request->hasFile('image_3')){
+                    
+            $img_path_3 = Storage::put('work_images', $request->image_3);
+            
+            $form_data['image_3'] = $img_path_3;
+        }
+        if($request->hasFile('image_4')){
+                    
+            $img_path_4 = Storage::put('work_images', $request->image_4);
+            
+            $form_data['image_4'] = $img_path_4;
+        }
+        if($request->hasFile('image_5')){
+                    
+            $img_path_5 = Storage::put('work_images', $request->image_5);
+            
+            $form_data['image_5'] = $img_path_5;
+        }
+
+        Image::create([
+            'work_id' => $work->id,
+            'image' => $img_path,
+            'image_2' => $img_path_2,
+            'image_3' => $img_path_3,
+            'image_4' => $img_path_4,
+            'image_5' => $img_path_5,
+        ]);
+
         $message = 'Creazione completata';
         return redirect()->route('admin.works.index', ['message' => $message]);
     }
@@ -88,7 +115,8 @@ class WorkController extends Controller
      */
     public function show(Work $work)
     {
-        return view('admin.works.show', compact('work'));
+        $images = Image::where('work_id')->get();
+        return view('admin.works.show', compact('work', 'images'));
     }
 
     /**

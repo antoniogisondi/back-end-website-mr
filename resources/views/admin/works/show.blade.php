@@ -34,7 +34,10 @@
                             <li><strong>Indirizzo lavoro:</strong> {{ $work->indirizzo_lavoro}}</li>
                             <li><strong>Responsabile lavoro:</strong> {{ $work->responsabile_lavoro}}</li>
                             <li><strong>Materiali:</strong> {{ $work->materiali}}</li>
-                        </ul>   
+                        </ul> 
+                        @foreach ($images as $image)
+                            <img class="d-block img-fluid w-25 border border-3 my-3" src="{{ asset('storage/'.$image->image) }}" alt="immagine-di-copertina">
+                        @endforeach  
                     </div>
                 </div>
             </div>

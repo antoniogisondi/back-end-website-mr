@@ -31,7 +31,7 @@
                             <li>
                                 <strong>Copertina:</strong>
                                 @if ($type->cover_image)
-                                    <img class="d-block img-fluid w-25 border border-3 my-3" src="{{ asset('storage/'.$type->cover_image) }}" alt="{{ $type->slug }}-immagine-di-copertina">     
+                                    <img class="d-block img-fluid w-25 border border-3 my-3" src="{{ asset('storage/'.$image->image) }}" alt="lavoro-immagine-di-copertina">     
                                 @else
                                     <span>Immagine non disponibile</span>
                                 @endif
